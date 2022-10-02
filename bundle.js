@@ -13528,30 +13528,9 @@ return Chart;
 },{}],2:[function(require,module,exports){
 const ctx = document.getElementById("myChart").getContext('2d');
 
-/*
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-		{
-    label: 'Looping tension',
-    data: [65, 59, 80, 81, 26, 55, 40],
-    fill: false,
-    borderColor: 'rgb(150, 192, 192)',
-  	},
-		{
-    label: 'Looping tension',
-    data: [55, 49, 70, 71, 16, 45, 30],
-    fill: false,
-    borderColor: 'rgb(75, 192, 192)',
-  	}
-	]
-};
-*/
-
 const data = {
 	datasets: [
 		{
-			label: 'Scatter 1',
 			data:	[{
 				x: 10,
 				y: 0,
@@ -13559,7 +13538,6 @@ const data = {
 			backgroundColor: 'rgb(255, 0, 0)'
 		},
 		{
-			label: 'Scatter 2',
 			data:	[{
 				x: 10,
 				y: 20,
@@ -13570,8 +13548,8 @@ const data = {
 }
 
 const image = new Image();
-// image.src = 'https://www.chartjs.org/img/chartjs-logo.svg';
-image.src = "data/Isle_beginning_map.webp";
+image.src = 'https://www.chartjs.org/img/chartjs-logo.svg';
+image.src = "data/isle.webp";
 
 const plugin = {
   id: 'custom_canvas_background_image',
@@ -13587,42 +13565,6 @@ const plugin = {
     }
   }
 };
-
-/*
-const config = {
-  type: 'line',
-  data: data,
-  options: {
-    animations: {
-      tension: {
-        duration: 1000,
-        easing: 'easeInQuad',
-        from: 1,
-        to: 0,
-        loop: true
-      }
-    },
-    scales: {
-      y: { // defining min and max so hiding the dataset does not change scale range
-        min: 0,
-        max: 100
-      },
-			xAxes: [{
-            gridLines: {
-							color: "rgba(0,0,0,0)",
-            }
-        }],
-        yAxes: [{
-            gridLines: {
-                display:false,
-            }   
-        }]
-    },
-		responsive:false,
-  },
-	plugins: [plugin],
-};
-*/
 
 const config = {
 	type: 'scatter',
@@ -13646,6 +13588,7 @@ const config = {
 };
 
 const Chart = require('chart.js');
+Chart.defaults.plugins.legend.display = false;
 const myChart = new Chart(ctx, config);
 
 deleteData = (chart, ind) => {
